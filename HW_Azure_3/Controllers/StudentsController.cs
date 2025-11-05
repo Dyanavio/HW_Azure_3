@@ -21,7 +21,7 @@ namespace HW_Azure_3.Controllers
             {
                 List<Student> students = await _context.Students.ToListAsync();
                 if (students.Count == 0) return Ok("Table 'Students' is empty");
-                return Ok(students);
+                return Ok(students); 
             }
             catch (Exception e)
             {

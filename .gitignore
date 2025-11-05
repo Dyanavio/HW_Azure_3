@@ -9,7 +9,7 @@
 *.user
 *.userosscache
 *.sln.docstates
-appsettings.json
+HW_Azure_3/appsettings.json
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs

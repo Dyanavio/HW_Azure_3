@@ -4,9 +4,19 @@
       "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.ApiManagement/service/Hw-Azure/apis/Azure",
       "type": "apis.azure"
     },
-    "mssql1": {
+    "secrets1": {
+      "serviceConnectorResourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('serviceConnectorResourceGroupName')]/providers/Microsoft.Web/sites/HW-Azure-1/providers/Microsoft.ServiceLinker/linkers/VaultUri_F7FEC238B9",
       "secretStore": "AzureAppSettings",
-      "type": "mssql.onprem",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.KeyVault/vaults/Hw-KeyVault-5",
+      "type": "secrets.keyVault",
+      "connectionId": "VaultUri",
+      "dynamicId": null
+    },
+    "mssql1": {
+      "serviceConnectorResourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('serviceConnectorResourceGroupName')]/providers/Microsoft.Web/sites/HW-Azure-1/providers/Microsoft.ServiceLinker/linkers/ConnectionStringsAzureSql_2AB1146C42",
+      "secretStore": "AzureAppSettings",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/server04112025-0/databases/database-1",
+      "type": "mssql.azure",
       "connectionId": "ConnectionStrings:AzureSql",
       "dynamicId": null
     }

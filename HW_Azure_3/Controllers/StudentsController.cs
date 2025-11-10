@@ -1,18 +1,42 @@
-﻿using HW_Azure_3.Data;
+﻿using Azure.Identity;
+using Azure.Security.KeyVault.Secrets;
+using HW_Azure_3.Data;
 using HW_Azure_3.Data.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Threading.Tasks;
 
 namespace HW_Azure_3.Controllers
 {
     [ApiController]
-    [Route("api/Students")]
+    [Route("api/students")]
     public class StudentsController : ControllerBase
     {
         private readonly DataContext _context;
-        public StudentsController(DataContext context) => _context = context;
+        private readonly IConfiguration _configuration;
+        private const string connectionString = "AzureSql";
+        public StudentsController(DataContext context, IConfiguration configuration)
+        {
+            _context = context;
+            _configuration = configuration;
+        }
+
+        [HttpGet("secret")]
+        public async Task<IActionResult> GetSecret()
+        {
+            try
+            {
+                var connection = _configuration[$"ConnectionStrings:{connectionString}"];
+                return Ok(connection);
+            }
+            catch(Exception e)
+            {
+                return StatusCode(500, $"Internal Server Error: {e.Message}");
+            }
+            
+        }
 
         [HttpGet]
         public async Task<IActionResult> GetAll()
